@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	
+	
+	<tiles-definitions>
+	
+		<definition name="baseLayout" template="/WEB-INF/views/template/template.jsp">
+			<!-- name : 화면정의의 이름을 baseLayout으로 하겠다.
+			template : 모든 jsp를 한번에 보여줄 template역할을 할 페이지 -->
+			<put-attribute name="title" value="전기차 충전소"/> <!-- jsp에서 title부분임 이것만 name 변수명 고정 -->
+			<!-- 영역을 나눈다. -->
+			<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+			<put-attribute name="body" value=""/> <!-- body부분은 페이지가 바뀔때마다 바뀌니까 value 값 없음 -->
+			<!-- 영역을 나눌 갯수만큼 나누는 것(현재는 2개로 나눈 것이다. title은 페이지제목임)
+			추가하고싶으면 put-attribute를 추가하면됨 -->
+		</definition>
+		
+		<definition name="*/*" extends="baseLayout">
+			<!-- baseLayout을 상속한다. -->
+			<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+		</definition>
+	
+	</tiles-definitions>
