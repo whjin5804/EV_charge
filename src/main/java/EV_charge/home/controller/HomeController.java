@@ -15,9 +15,9 @@ public class HomeController {
 	@Resource(name = "homeService")
 	HomeService homeService;
 	
-	@GetMapping("/first")
+	@GetMapping("/goHome")
 	public String goHome() {
 		
-		return "/home";
+		return "template/home";
 	}
 }
