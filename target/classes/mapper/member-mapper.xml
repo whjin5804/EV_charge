@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 모든 SQL문을 mapper태그 안에 작성 -->
+<mapper namespace="memberMapper">
+	<!-- resultMap 작성 -->
+	<resultMap type="EV_charge.member.vo.MemberVO" id="member">
+		<id column="MEMBER_CODE"   property="memberCode"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_PW" property="memberPw"/>
+		<result column="CAR_INFO" property="carInfo"/>
+		<result column="CAR_NUM" property="carNum"/>
+		<result column="MEMBER_TEL" property="memberTel"/>
+		<result column="MEMBER_EMAIL" property="memberEmail"/>
+	</resultMap>
+
+
+	<select id="isExist" resultType="String">
+		SELECT MEMBER_CODE
+		FROM EV_MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<insert id="insertNewMember">
+		INSERT INTO EV_MEMBER(
+					MEMBER_CODE
+					, MEMBER_ID
+					, MEMBER_PW
+					, CAR_INFO
+					, CAR_NUM
+					, MEMBER_TEL
+					, MEMBER_EAMIL
+					) VALUES (
+						(SELECT NVL(MAX(MEMBER_CODE)+1, 1) FROM EV_MEMBER)
+						, #{memberId}
+						, #{memberPw}
+						, #{carInfo}
+						, #{carNum}
+						, #{memberTel}
+						, #{memberEmail} 
+					)
+
+		
+	</insert>
+
+
+
+</mapper>
