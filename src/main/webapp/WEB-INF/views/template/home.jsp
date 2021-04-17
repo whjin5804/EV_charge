@@ -6,25 +6,25 @@
 <script type="text/javascript" src="/resources/js/common/home.js?ver=12"></script>
 <link href="/resources/css/common/home.css?ver=12">
 <style>
+.slide{
+	height:80vh;
+}
 </style>
 </head>
 <body>
-<div class="slide" style="margin-left: 150px;">
-  <ul>
-    <li>
-    	<img alt="" src="/resources/image/tesla.jpg" width="800px" height="430px">
-    </li>
-    <li>
-    	<img alt="" src="/resources/image/tesla3.jpg" width="800px" height="430px">
-    </li>
-    <li>
-    	<img alt="" src="/resources/image/tesla4.jpg" width="800px" height="430px">
-    </li>
-    <li>
-    	<img alt="" src="/resources/image/tesla5.jpg" width="800px" height="430px">
-    </li>
-
-  </ul>
-</div>
+	<div class="container">
+		<div class="slide" style="margin-left: 150px;">
+			<ul>
+				<li><img alt="" src="/resources/image/tesla.jpg" width="800px"
+					height="430px"></li>
+				<li><img alt="" src="/resources/image/tesla3.jpg" width="800px"
+					height="430px"></li>
+				<li><img alt="" src="/resources/image/tesla4.jpg" width="800px"
+					height="430px"></li>
+				<li><img alt="" src="/resources/image/tesla5.jpg" width="800px"
+					height="430px"></li>
+			</ul>
+		</div>	<!-- slide끝 -->
+	</div>
 </body>
 </html>
