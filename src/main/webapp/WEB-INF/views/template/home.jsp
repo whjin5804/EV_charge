@@ -9,6 +9,7 @@
 </style>
 </head>
 <body>
+<div class="contianer ev_charge">
 <div class="slide" style="margin-left: 150px;">
   <ul>
     <li>
@@ -23,8 +24,8 @@
     <li>
     	<img alt="" src="/resources/image/tesla5.jpg" width="800px" height="430px">
     </li>
-
   </ul>
+</div>
 </div>
 </body>
 </html>

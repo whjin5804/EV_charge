@@ -43,11 +43,15 @@ ul, li{
 				name님 반갑
 			</div>
 				<c:choose>
-					<c:when test=""> <!-- 관리자면 관리자메뉴 -->
-				
+					<c:when test="${sessionScope.loginInfo.isAdmin eq 'Y' } }"> <!-- 관리자면 관리자메뉴 -->
+						<a href="admin/goAdmin">
+							관리자메뉴
+						</a>						
 					</c:when>
-					<c:otherwise> <!-- 일반회원면 관리자메뉴 -->
-						
+					<c:otherwise> <!-- 일반회원면 마이페이지 -->
+						<a href="member/myPage">
+							마이페이지
+						</a>
 					</c:otherwise>
 				</c:choose>
 		</div>
