@@ -72,7 +72,7 @@ $(document).ready(function(){
 					join();
 				}
 				else{
-					alert('아이디가 중복되었습니다.')
+					alert('아이디 중복을 확인해주세요.')
 					$('#memberId').focus();
 					$('#memberId').css('color', 'red');
 				}
@@ -89,7 +89,6 @@ $(document).ready(function(){
 
 
 	join = function(){
-		/왜안되
 		$('#insertJoin').submit();	
 	};
 

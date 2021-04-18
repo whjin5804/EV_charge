@@ -1,6 +1,5 @@
 package EV_charge.member.controller;
 
-import java.io.Reader;
 
 import javax.annotation.Resource;
 
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import EV_charge.member.service.MemberService;
@@ -21,6 +19,8 @@ public class MemberController {
 	@Resource(name = "memberService")
 	MemberService memberService;
 	
+	
+	/* 로그인 */
 	//menu.jsp > 로그인으로 이동
 	@GetMapping("/loginForm")
 	public String loginForm() {
@@ -29,6 +29,12 @@ public class MemberController {
 	}
 	
 	//login_form.jsp > 로그인DB
+	
+	
+	
+	/* 로그인 끝*/
+	
+	
 	
 	/* 회원가입 */
 	//menu.jsp > 회원가입으로 이동

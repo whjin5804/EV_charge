@@ -11,20 +11,30 @@
 	width: 60%;
 }
 
+#essential{
+	font-size: 13px;
+}
 </style>
 </head>
 <body>
 	<div class="container ev_charge">
 		
-		<div class="welcome">
-			회원가입
+		<div class="row">
+			<div class="col-2 welcome">
+				회원가입
+			</div>
+			<div class="offset-7 col-3" id="essential">
+				(<b style="color:red;">*</b> 표시된 항목은 필수입력 사항입니다.) 
+			</div>
 		</div>
+		
 		<hr style="margin-bottom:55px;" class="">
 		
 		
 		<div class="joinForm1">
 			<form action="/member/join" method="post" id="insertJoin">
 				 <!-- 아이디/아이디중복확인 -->
+				 
 				<div class="form-row">
 					<div class="form-group col-md-10">
 						<label for="memberId">아이디 <b style="color : red;">*</b> </label>
@@ -44,8 +54,8 @@
 					<div class="form-group col-md-6">
 						<label for="memberPw2">비밀번호확인 <b style="color : red;">*</b> 
 						<span style="color:" id="checkPw"> </span>
-						</label> <input
-							type="password" class="form-control" id="memberPw2" required>
+						</label>
+						<input type="password" class="form-control" id="memberPw2" required>
 					</div>
 				</div>
 				
@@ -56,8 +66,8 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="carNum">차량 번호</label>
-					<input type="text" class="form-control" id="carNum" name="carNum" placeholder="ex) 1234">
+					<label for="carNum">차량 번호 <b style="color : red;">*</b></label>
+					<input type="number" class="form-control" id="carNum" name="carNum" placeholder="ex) 1234" required>
 				</div>
 				
 				

@@ -28,7 +28,7 @@
 					, CAR_INFO
 					, CAR_NUM
 					, MEMBER_TEL
-					, MEMBER_EAMIL
+					, MEMBER_EMAIL
 					) VALUES (
 						(SELECT NVL(MAX(MEMBER_CODE)+1, 1) FROM EV_MEMBER)
 						, #{memberId}
@@ -38,8 +38,6 @@
 						, #{memberTel}
 						, #{memberEmail} 
 					)
-
-		
 	</insert>
 
 
