@@ -9,19 +9,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-latest.min.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/resources/js/common/common.js?ver=1"></script>
+<script type="text/javascript" src="/resources/js/common/common.js?ver=2"></script>
 <link rel="stylesheet" href="/resources/css/common/common.css?ver=1" type="text/css">
 <style type="text/css">
-ul, li{
-	display: inline-block;
-}
 .menuCol{
 	margin-top: 15px;
 }
 
-a:hover{
+/* a:hover{
 	text-decoration: none;
-}
+} */
 </style>
 </head>
 <body>
@@ -45,11 +42,10 @@ a:hover{
 	<!-- 로그인 시 -->
 	<c:if test="${not empty sessionScope.loginInfo }">
 		<div class="row memberMenu">
-			<div class="col md-3 offset-md-9 menuCol">
-				name님 반갑
-			</div>
+			<div class="col md-4 offset-md-8 menuCol">
+				${sessionScope.loginInfo.memberName }님 반갑습니다.
 				<c:choose>
-					<c:when test="${sessionScope.loginInfo.isAdmin eq 'Y' } }"> <!-- 관리자면 관리자메뉴 -->
+					<c:when test="${sessionScope.loginInfo.isAdmin.equals('Y')}"> <!-- 관리자면 관리자메뉴 -->
 						<a href="admin/goAdmin">
 							관리자메뉴
 						</a>						
@@ -60,6 +56,10 @@ a:hover{
 						</a>
 					</c:otherwise>
 				</c:choose>
+				<a href="/member/logout">
+					로그아웃
+				</a>
+			</div>
 		</div>
 	</c:if>
 	
@@ -86,7 +86,6 @@ a:hover{
 			</a>
 		</div>
 	</div>
-	
 	
 </div>
 </body>

@@ -5,13 +5,46 @@ public class MemberVO {
 	private String memberCode;
 	private String memberId;
 	private String memberPw;
+	private String memberName;
 	private String carInfo;
 	private int carNum;
 	private String memberTel;
 	private String memberEmail;
+	private String salt;
+	private String isAdmin;
 	
 	
 	
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public String getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(String isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+	public String getMemberCode() {
+		return memberCode;
+	}
+	public void setMemberCode(String memberCode) {
+		this.memberCode = memberCode;
+	}
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	public String getMemberPw() {
+		return memberPw;
+	}
+	public void setMemberPw(String memberPw) {
+		this.memberPw = memberPw;
+	}
 	public String getCarInfo() {
 		return carInfo;
 	}
@@ -36,25 +69,15 @@ public class MemberVO {
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
-	public String getMemberCode() {
-		return memberCode;
+	public String getSalt() {
+		return salt;
 	}
-	public void setMemberCode(String memberCode) {
-		this.memberCode = memberCode;
-	}
-	public String getMemberId() {
-		return memberId;
-	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-	public String getMemberPw() {
-		return memberPw;
-	}
-	public void setMemberPw(String memberPw) {
-		this.memberPw = memberPw;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
+	
+
 	
 	
 	

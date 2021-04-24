@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/resources/js/member/join_form.js?ver=122"></script>
+<script type="text/javascript" src="/resources/js/member/join_form.js?ver=1"></script>
 <style type="text/css">
 #submitBtn{
 	width: 60%;
@@ -36,12 +36,15 @@
 				 <!-- 아이디/아이디중복확인 -->
 				 
 				<div class="form-row">
-					<div class="form-group col-md-10">
+					<div class="form-group col-md-9">
 						<label for="memberId">아이디 <b style="color : red;">*</b> </label>
 						<input type="text" class="form-control" id="memberId" name="memberId" required>
 					</div>
 					<div class="form-group col-md-2 align-self-end">
-						<button type="button" class="btn btn-primary checkId" value="아이디 중복 확인" style="width: 100%">아이디 중복 확인</button>
+						<button type="button" id="checkIdBtn" class="btn btn-primary checkId" value="아이디 중복 확인" style="width: 100%">아이디 중복 확인</button>
+					</div>
+					<div class="form-group col-md-1 align-self-end">
+						<input type="checkbox" disabled id="checkDup" value="">
 					</div>
 				</div>
 				
@@ -55,10 +58,15 @@
 						<label for="memberPw2">비밀번호확인 <b style="color : red;">*</b> 
 						<span style="color:" id="checkPw"> </span>
 						</label>
-						<input type="password" class="form-control" id="memberPw2" required>
+						<input type="password" class="form-control" id="memberPw2" name="memberPw2" required>
 					</div>
 				</div>
 				
+				
+				<div class="form-group">
+					<label for="memberName">이름</label>
+					<input type="text" class="form-control" id="memberName" name="memberName" placeholder="ex) 홍길동">
+				</div>
 				
 				<div class="form-group">
 					<label for="carInfo">차량 종류</label>
@@ -81,7 +89,6 @@
 						<input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="aaa@gmail.com">
 					</div>
 				</div>
-			</form>
 				
 				
 				<div class="form-group">
@@ -93,12 +100,14 @@
 				
 				<div class="row">
 					<div class="col-7 offset-4">
-						<button type="button" class="btn btn-primary align-self-center" id="submitBtn">회원가입</button>
+						<input type="submit" class="btn btn-primary align-self-center" id="submitBtn" value="회원가입">
 					</div>
 				</div>
+			</form>
 		</div>	<!-- joinForm -->
 		
 		
 	</div>
 </body>
+
 </html>
