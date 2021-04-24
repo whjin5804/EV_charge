@@ -13,5 +13,15 @@ table {
 	margin-bottom: 0;
 }
 
+a{
+	color: green;
+	
+}
+
+a:hover {
+	color : green;
+	cursor: pointer;
+	text-decoration: underline;
+}
 
 

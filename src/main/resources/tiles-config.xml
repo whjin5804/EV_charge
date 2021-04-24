@@ -3,6 +3,19 @@
 	
 	
 	<tiles-definitions>
+		<definition name="sideLayout" template="/WEB-INF/views/template/side_template.jsp">
+			<put-attribute name="title" value="전기차 충전소"/> <!-- jsp에서 title부분임 이것만 name 변수명 고정 -->
+			<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+			<put-attribute name="body" value=""/> 
+			<put-attribute name="side" value="/WEB-INF/views/template/side.jsp"/> 
+			<put-attribute name="foot" value="/WEB-INF/views/template/foot.jsp"/> 
+		</definition>
+
+		<definition name="side/*/*" extends="sideLayout">
+			<!-- baseLayout을 상속한다. -->
+			<put-attribute name="body" value="/WEB-INF/views/side/{1}/{2}.jsp"></put-attribute>
+		</definition>
+	
 	
 		<definition name="baseLayout" template="/WEB-INF/views/template/template.jsp">
 			<!-- name : 화면정의의 이름을 baseLayout으로 하겠다.
@@ -22,4 +35,6 @@
 			<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
 		</definition>
 	
+		
+		
 	</tiles-definitions>
