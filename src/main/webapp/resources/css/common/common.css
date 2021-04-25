@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body{
+	font-family: 'Nanum Gothic', sans-serif;
+	
+}
+
 
 table {
 	border-collapse: collapse;
@@ -13,5 +18,26 @@ table {
 	margin-bottom: 0;
 }
 
+a{
+	color: #01579B;	
+}
 
+a:hover {
+	color : #01579B;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* 게시판있는 곳들의 jumbotron */
+.jumbotron{
+	text-align: center;
+	padding: 30px 30px;
+	height: 120px;
+}
+
+/* 한칸들간의 간격 전기차소개*/
+.list-group{
+	margin-bottom: 80px;
+}
 

@@ -2,6 +2,7 @@ package EV_charge.member.controller;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import EV_charge.member.service.MemberService;
+import EV_charge.member.vo.LoginVO;
 import EV_charge.member.vo.MemberVO;
+import EV_charge.util.SHA_256;
 
 @Controller
 @RequestMapping(value = "/member")
@@ -29,8 +32,23 @@ public class MemberController {
 	}
 	
 	//login_form.jsp > 로그인DB
+	@PostMapping("/login")
+	public String login(HttpSession session, LoginVO loginVO) {
+		String salt = memberService.getSaltById(loginVO.getMemberId());
+		String encryptPw = SHA_256.getEncrypt(loginVO.getMemberPw(), salt);
+		loginVO.setMemberPw(encryptPw);
+		
+		MemberVO loginInfo = memberService.login(loginVO);
+		session.setAttribute("loginInfo", loginInfo);
+		
+		return "redirect:/home/goHome";
+	}
 	
-	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginInfo");
+		return "redirect:/home/goHome";
+	}
 	
 	/* 로그인 끝*/
 	
@@ -52,9 +70,8 @@ public class MemberController {
 	}
 	
 	//Join_form.jsp > 회원가입 정보 insert
-	@PostMapping("/join")
+	@RequestMapping("/join")
 	public String insertNewMember(MemberVO memberVO) {
-		System.out.println(123);
 		memberService.insertNewMember(memberVO);
 		
 		return "template/home";

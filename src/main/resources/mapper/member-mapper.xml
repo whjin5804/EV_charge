@@ -4,41 +4,68 @@
 <mapper namespace="memberMapper">
 	<!-- resultMap 작성 -->
 	<resultMap type="EV_charge.member.vo.MemberVO" id="member">
-		<id column="MEMBER_CODE"   property="memberCode"/>
-		<result column="MEMBER_ID" property="memberId"/>
-		<result column="MEMBER_PW" property="memberPw"/>
-		<result column="CAR_INFO" property="carInfo"/>
-		<result column="CAR_NUM" property="carNum"/>
-		<result column="MEMBER_TEL" property="memberTel"/>
-		<result column="MEMBER_EMAIL" property="memberEmail"/>
+		<id column="MEMBER_CODE"   		property="memberCode"/>
+		<result column="MEMBER_ID" 		property="memberId"/>
+		<result column="MEMBER_PW" 		property="memberPw"/>
+		<result column="MEMBER_NAME" 	property="memberName"/>
+		<result column="CAR_INFO" 		property="carInfo"/>
+		<result column="CAR_NUM" 		property="carNum"/>
+		<result column="MEMBER_TEL" 	property="memberTel"/>
+		<result column="MEMBER_EMAIL" 	property="memberEmail"/>
+		<result column="SALT" 			property="salt"/>
+		<result column="IS_ADMIN" 		property="isAdmin"/>
 	</resultMap>
 
-
+	<!-- 아이디 중복확인 -->
 	<select id="isExist" resultType="String">
-		SELECT MEMBER_CODE
+		SELECT MEMBER_ID
 		FROM EV_MEMBER
 		WHERE MEMBER_ID = #{memberId}
 	</select>
 	
+	<!-- 회원가입 -->
 	<insert id="insertNewMember">
 		INSERT INTO EV_MEMBER(
 					MEMBER_CODE
 					, MEMBER_ID
 					, MEMBER_PW
+					, MEMBER_NAME
 					, CAR_INFO
 					, CAR_NUM
 					, MEMBER_TEL
 					, MEMBER_EMAIL
+					, SALT
 					) VALUES (
-						(SELECT NVL(MAX(MEMBER_CODE)+1, 1) FROM EV_MEMBER)
+						(SELECT NVL(MAX(TO_NUMBER(MEMBER_CODE))+1, 1) FROM EV_MEMBER)
 						, #{memberId}
 						, #{memberPw}
+						, #{memberName}
 						, #{carInfo}
 						, #{carNum}
 						, #{memberTel}
 						, #{memberEmail} 
+						, #{salt}
 					)
 	</insert>
+	
+	<!-- 로그인 시 아이디에 맞는 salt값 -->
+	<select id="getSaltById" resultType="String">
+		SELECT SALT FROM EV_MEMBER WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="selectLogin" resultMap="member">
+		SELECT MEMBER_CODE
+				, MEMBER_ID
+				, MEMBER_NAME
+				, CAR_INFO
+				, CAR_NUM
+				, MEMBER_TEL
+				, MEMBER_EMAIL
+				, IS_ADMIN
+		FROM EV_MEMBER
+		WHERE MEMBER_PW = #{memberPw}
+	</select>
 
 
 
