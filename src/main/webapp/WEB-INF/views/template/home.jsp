@@ -23,6 +23,8 @@ img{
 	list-style: none;
 }
 
+
+
 </style>
 </head>
 <body>
@@ -50,9 +52,8 @@ img{
 	
 	
 	
-	
-	
-	
+
+
 </div>
 </body>
 </html>

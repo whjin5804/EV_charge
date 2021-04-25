@@ -19,7 +19,7 @@
 
 /* 사이드버튼들 간격 */
 .sideBtn{
-	width: 120px;
+	width: 160px;
 }
 </style>
 </head>
@@ -27,39 +27,37 @@
 
 	<!-- 소개 -->
 	<div class="btn-group dropright">
-	  <button type="button" class="btn <c:if test="${sideMenu eq 1 }">btn-success</c:if> dropdown-toggle sideBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  <button type="button" class="btn <c:if test="${sideMenu eq 11 ||sideMenu eq 12 || sideMenu eq 13}">btn-success</c:if> dropdown-toggle sideBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    전기차 소개
 	  </button>
 	  <div class="dropdown-menu">
-		  <a class="dropdown-item" href="/intro/introEvCar">전기차 소개</a>
-		  <a class="dropdown-item active" href="#">Active link</a>
-		  <a class="dropdown-item" href="#">Another link</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 11}">active</c:if>" href="/intro/introEvCar">전기차 소개</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 12}">active</c:if>" href="/intro/supplyGoal">전기차 보급목적</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 13}">active</c:if>" href="/intro/chargeInfo">전기차 충전정보</a>
 		</div>
 	</div>
 	
 	
 	<!-- 정보마당 -->
 	<div class="btn-group dropright">
-	  <button type="button" class="btn <c:if test="${sideMenu eq 2 }">btn-success</c:if> dropdown-toggle sideBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  <button type="button" class="btn <c:if test="${sideMenu eq 21 || sideMenu eq 22} }">btn-success</c:if> dropdown-toggle sideBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    정보마당
 	  </button>
 	  <div class="dropdown-menu">
-		  <a class="dropdown-item" href="#">Regular link</a>
-		  <a class="dropdown-item active" href="#">Active link</a>
-		  <a class="dropdown-item" href="#">Another link</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 21}">active</c:if>" href="#">충전소 찾기</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 22}">active</c:if>" href="#">충전소 등록</a>
 		</div>
 	</div>
 	
 	
 	<!-- 참여마당 -->
 	<div class="btn-group dropright">
-	  <button type="button" class="btn <c:if test="${sideMenu eq 3 }">btn-success</c:if> dropdown-toggle sideBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  <button type="button" class="btn <c:if test="${sideMenu eq 31 || sideMenu eq 32 || sideMenu eq 33 }">btn-success</c:if> dropdown-toggle sideBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    참여마당
 	  </button>
 	  <div class="dropdown-menu">
-		  <a class="dropdown-item" href="#">Regular link</a>
-		  <a class="dropdown-item active" href="#">Active link</a>
-		  <a class="dropdown-item" href="#">Another link</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 31}">active</c:if>" href="/board/publicBoard">공지사항</a>
+		  <a class="dropdown-item <c:if test="${sideMenu eq 32}">active</c:if>" href="/board/freeBoard">자유게시판</a>
 		</div>
 	</div>
 

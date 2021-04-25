@@ -16,10 +16,32 @@
 	text-align: center;
 	margin: 0 auto;
 }
+
+#homeToast{
+	max-width: 100%;
+}
+
+#homeToastHeader{
+    background-color: green;
+    color: white;
+}
 </style>
 </head>
 <body>
 	<div class="container">
+		<div class="toast" role="alert" aria-live="assertive"
+			aria-atomic="true" data-autohide="false" id="homeToast">
+			<!-- data-autohide="false" -->
+			<div class="toast-header" id="homeToastHeader">
+			<strong class="mr-auto" style="text-align: center;">로그인 시 편리하게 이용하실 수 있습니다.</strong>
+				<button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+					aria-label="Close" style="color: white;">
+					<span aria-hidden="true" style="color: white;">&times;</span>
+				</button>
+			</div>
+		</div>
+	
+	
 
 		<!-- 로그인바 -->
 		<!-- 미로그인시 -->
@@ -70,9 +92,9 @@
 						aria-expanded="false"> 전기차 소개 </a>
 
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="/intro/introEvCar">전기차 개요</a> <a
-							class="dropdown-item" href="#">전기차 보급목적</a> <a
-							class="dropdown-item" href="#">전기차 충전정보</a>
+						<a class="dropdown-item <c:if test="${sideMenu eq 11}">active</c:if>" href="/intro/introEvCar">전기차 개요</a> <a
+							class="dropdown-item <c:if test="${sideMenu eq 12}">active</c:if>" href="/intro/supplyGoal">전기차 보급목적</a> <a
+							class="dropdown-item <c:if test="${sideMenu eq 13}">active</c:if>" href="/intro/chargeInfo">전기차 충전정보</a>
 					</div>
 				</div>
 			</div>
@@ -98,8 +120,8 @@
 						id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> 참여마당 </a>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="#">공지사항</a> <a
-							class="dropdown-item" href="#">자유게시판</a>
+						<a class="dropdown-item" href="/board/publicBoard">공지사항</a> <a
+							class="dropdown-item" href="/board/freeBoard">자유게시판</a>
 					</div>
 				</div>
 			</div>

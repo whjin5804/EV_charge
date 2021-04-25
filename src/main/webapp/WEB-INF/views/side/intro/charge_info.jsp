@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-아아
+충전정보
 </body>
 </html>

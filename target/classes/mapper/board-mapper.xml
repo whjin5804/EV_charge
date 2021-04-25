@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 모든 SQL문을 mapper태그 안에 작성 -->
+<mapper namespace="boardMapper">
+	<!-- resultMap 작성 -->
+	<resultMap type="EV_charge.board.vo.BoardVO" id="board">
+		<id column="BOARD_CODE" 		property="boardCode"/>
+		<result column="BOARD_TITLE" 	property="boardTitle"/>
+		<result column="BOARD_DATE" 	property="boardDate"/>
+		<result column="BOARD_CONTENT"  property="boardContent"/>
+		<result column="WRITER" 		property="writer"/>
+		<result column="IS_LOCK" 		property="isLock"/>
+		<result column="IMAGE_NAME" 	property="imageName"/>
+		<result column="READ_CNT" 		property="readCnt"/>
+		<result column="LIKE_CNT" 		property="likeCnt"/>
+	</resultMap>
+
+	<select id="selectPublicBoardList" resultMap="board">
+		SELECT BOARD_CODE
+				, BOARD_TITLE
+				, TO_CHAR(BOARD_DATE, 'yyyy-mm-dd') AS BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		FROM PUBLIC_BOARD
+		ORDER BY BOARD_DATE
+	</select>
+
+
+
+</mapper>

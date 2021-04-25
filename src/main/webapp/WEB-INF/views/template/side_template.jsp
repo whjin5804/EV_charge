@@ -39,12 +39,12 @@
 	<hr>
 	
 		<div class="row">
-			<div class="offset-1 col-2">
+			<div class="offset-1 col-1">
 				<div id="side">
 					<tiles:insertAttribute name="side"/>
 				</div>
 			</div>
-			<div class="offset-1 col-7 offset-1">
+			<div class="offset-1 col-8 offset-1">
 				<div id="body" class="EV_CHARGE">
 					<tiles:insertAttribute name="body"/>
 				</div>
