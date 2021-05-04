@@ -12,7 +12,7 @@
 + 개발 환경
   + 목표시스템 : 전기자동차 충전소 현황 및 사용시간 공유
   + 개발언어 : JAVA SPRING
-    JS, Jquery, AJAX, BootStrap
+    ,JS, Jquery, AJAX, BootStrap
   + 운영체제 : window, mac
   + 하드웨어 : AMD4800U
   + 데이터베이스 : ORACLE, Mybatis
