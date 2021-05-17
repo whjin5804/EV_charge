@@ -11,7 +11,30 @@ public class BoardVO {
 	private String imageName;
 	private int readCnt;
 	private int likeCnt;
+	private String seq;
+	private String rn;
+	private String searchKeyword;
 	
+	
+	
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public String getRn() {
+		return rn;
+	}
+	public void setRn(String rn) {
+		this.rn = rn;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public String getBoardCode() {
 		return boardCode;
 	}

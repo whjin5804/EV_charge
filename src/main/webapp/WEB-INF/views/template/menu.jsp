@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/resources/js/member/login.js?ver=12"></script>
 <style type="text/css">
 /* 로그인/회원가입 */
 .menuCol {
@@ -49,7 +50,7 @@
 			<div class="row memberMenu">
 				<div class="col md-3 offset-md-9 menuCol">
 					<!-- Button trigger modal -->
-					<a href="" data-toggle="modal" data-target="#loginModal"> 로그인 </a>
+					<a href="" data-toggle="modal" data-target="#loginModal" onclick="checkCookie()"> 로그인 </a>
 					<a href="/member/joinForm"> 회원가입 </a>
 				</div>
 			</div>
@@ -75,11 +76,11 @@
 			</div>
 		</c:if>
 
-		<!-- 메뉴바 -->
+		<!-- 로고 -->
 		<div class="row menu">
 			<div class="col-2 offset-1 logo">
 				<a href="/home/goHome"> <img alt="logo"
-					src="/resources/image/elCar.png" width="130px" height="50px">
+					src="/resources/image/elCar.png" width="130px" height="70px">
 				</a>
 			</div>
 			
@@ -137,7 +138,7 @@
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="loginModalLabel">Modal title</h5>
+						<h5 class="modal-title" id="loginModalLabel">로그인</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -151,8 +152,7 @@
 									<div class="form-group col-md-12">
 										<label for="memberId">아이디 입력</label> <input type="text"
 											class="form-control" id="memberId" name="memberId"
-											aria-describedby="emailHelp"> <small id="emailHelp"
-											class="form-text text-muted">아이디를 정확히 입력해주세요.</small>
+											aria-describedby="emailHelp">
 									</div>
 								</div>
 							</div>
@@ -167,15 +167,20 @@
 							<div class="row">
 								<div class="col">
 									<div class="form-group form-check col-md-12">
-										<input type="checkbox" class="form-check-input"
-											id="exampleCheck1" checked> <label class="form-check-label"
-											for="exampleCheck1">반갑습니다.</label>
+										<input type="checkbox" class="form-check-input" id="rememberId">
+											<label class="form-check-label" for="rememberId">아이디 저장</label>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
-									<button type="submit" class="btn btn-primary">로그인</button>
+									<button type="button" class="btn btn-primary" onclick="login()">로그인</button>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 5px;">
+								<div class="col">
+									<button type="button" class="btn btn-warning" onclick="location.href='/member/findIdForm';">아이디찾기</button>
+									<button type="button" class="btn btn-danger" onclick="location.href='/member/findPwForm';">비밀번호찾기</button>
 								</div>
 							</div>
 						</form>

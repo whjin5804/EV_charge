@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<!-- 모든 SQL문을 mapper태그 안에 작성 -->
 <mapper namespace="boardMapper">
 	<!-- resultMap 작성 -->
+	
 	<resultMap type="EV_charge.board.vo.BoardVO" id="board">
 		<id column="BOARD_CODE" 		property="boardCode"/>
 		<result column="BOARD_TITLE" 	property="boardTitle"/>
@@ -13,7 +14,10 @@
 		<result column="IMAGE_NAME" 	property="imageName"/>
 		<result column="READ_CNT" 		property="readCnt"/>
 		<result column="LIKE_CNT" 		property="likeCnt"/>
+		<result column="SEQ" 			property="seq"/>
+		<result column="rn" 			property="rn"/>
 	</resultMap>
+	
 
 	<select id="selectPublicBoardList" resultMap="board">
 		SELECT BOARD_CODE
@@ -27,7 +31,148 @@
 		FROM PUBLIC_BOARD
 		ORDER BY BOARD_DATE
 	</select>
-
-
+	
+	<select id="detailBoard" resultMap="board">
+		SELECT BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, TO_CHAR(BOARD_DATE, 'yyyy-mm-dd') AS BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		FROM PUBLIC_BOARD
+		WHERE BOARD_CODE = #{boardCode}
+		ORDER BY BOARD_DATE
+	</select>
+	
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM PUBLIC_BOARD
+	</select>
+	
+	<select id="selectBoard" resultMap="board">
+	SELECT  BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		        , SEQ
+                , RN
+		FROM (
+		SELECT  ROWNUM RN, 
+                BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		        , SEQ
+		FROM (
+		SELECT BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, TO_CHAR(BOARD_DATE, 'yyyy-mm-dd') AS BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		        , SEQ
+		FROM PUBLIC_BOARD
+        ORDER BY BOARD_DATE
+		) A
+		)
+		WHERE RN BETWEEN #{start} AND #{end}
+		<if test="searchKeyword != null and !searchKeyword.equals('')">
+			AND BOARD_TITLE LIKE '%' || #{searchKeyword} || '%'
+		</if>
+		ORDER BY RN
+	</select>	
+	
+	<!-- 자유게시판 갯수 출력 -->
+	<select id="countFreeBoard" resultType="int">
+		SELECT COUNT(*) FROM FREE_BOARD
+	</select>
+	
+	<select id="selectFreeBoard" resultMap="board">
+	SELECT  BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		        , SEQ
+                , RN
+		FROM (
+		SELECT  ROWNUM RN, 
+                BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		        , SEQ
+		FROM (
+		SELECT BOARD_CODE
+				, BOARD_TITLE
+				, BOARD_CONTENT
+				, TO_CHAR(BOARD_DATE, 'yyyy-mm-dd') AS BOARD_DATE
+				, WRITER
+				, IS_LOCK
+				, IMAGE_NAME
+				, READ_CNT
+				, LIKE_CNT
+		        , SEQ
+		FROM FREE_BOARD
+        ORDER BY BOARD_DATE
+		) A
+		)
+		WHERE RN BETWEEN #{start} AND #{end}
+		<if test="searchKeyword != null and !searchKeyword.equals('')">
+			AND BOARD_TITLE LIKE '%' || #{searchKeyword} || '%'
+		</if>
+		ORDER BY RN
+	</select>	
+	
+	
+	<!-- 자유게시판 글작성 -->
+	<insert id="writeFreeBoard">
+		INSERT INTO FREE_BOARD(
+						BOARD_CODE
+						, BOARD_COTENT
+						, BOARD_TITLE
+						, WRITER
+						, IS_LOCK
+						, SEQ) VALUES(
+						(SELECT 'BOARD_' || LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BOARD_CODE, 7))) + 1, 1), 3, 0) FROM FREE_BOARD)
+						, #{boardContent}
+						, #{boardTitle}
+						, #{writer}
+						<if test="isLock == null || isLock.equals('')">
+							'2'
+						</if>
+						<if test="isLock == 1 || isLock.equals('1')">
+							'1'
+						</if>
+						, seq.nextval()
+						)
+	</insert>
+	
+	
 
 </mapper>

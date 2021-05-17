@@ -3,15 +3,15 @@ $(document).ready(function() {
 
 	//아이디 중복 확인
 	$(document).on('click', '.checkId', function() {
-		const memberId = $('#memberId').val();
+		let memberId = $('#memberId1').val();
 		checkId(memberId);
 	});
 
 	//비밀번호 일치 확인
 	//일치하면 자동으로 span태그의 속성값 바꿈
 	$(document).on('keyup', '#memberPw2', function() {
-		let memberPw = $('#memberPw').val();
-		let memberPw2 = $('#memberPw2').val();
+		const memberPw = $('#memberPw1').val();
+		const memberPw2 = $('#memberPw2').val();
 		if (memberPw == memberPw2) {
 			$('#checkPw').text('비밀번호가 일치합니다.');
 			$('#checkPw').css('color', 'blue');
@@ -24,8 +24,8 @@ $(document).ready(function() {
 	})
 
 	//아이디에서 바뀌고 키보드 땔뗴
-		$(document).on('keyup', '#memberId', function(){
-			const memberId = $('#memberId').val();	
+		$(document).on('keyup', '#memberId1', function(){
+			const memberId = $('#memberId1').val();	
 			
 			$.ajax({
 			url: '/member/checkMemberId', //요청경로, 어떤 controller로갈까
@@ -66,14 +66,14 @@ $(document).ready(function() {
 			data: { 'memberId': memberId }, //필요한 데이터
 			success: function(result) {
 				if (result == '') {
-					$('#memberId').css('color', 'black');
+					$('#memberId1').css('color', 'black');
 					alert('사용하실 수 잇는 아이디입니다.');
 					$('#checkDup').prop('checked', true);
 				}
 				else {
 					alert('아이디가 중복되었습니다.')
-					$('#memberId').focus();
-					$('#memberId').css('color', 'red');
+					$('#memberId1').focus();
+					$('#memberId1').css('color', 'red');
 				}
 				//ajax 실행 성공 후 실행할 코드 작성
 
@@ -231,7 +231,7 @@ $(document).ready(function() {
 				let isTrue = $('#checkDup').val();
 				if(isTrue == 'undefined' || isTrue == '' || isTrue == null || isTrue == NaN){
 					alert('아이디가 중복되었습니다.');
-					$('#memberId').focus();
+					$('#memberId1').focus();
 				}
 				else{
 					alert('방문해주셔서 감사합니다.')
@@ -243,14 +243,13 @@ $(document).ready(function() {
 	}
 
 		join1 = function(){
-			let memberId = $('#memberId').val();
-			let memberPw = $('#memberPw').val();
+			const memberId = $('#memberId1').val();
+			let memberPw = $('#memberPw1').val();
 			let memberName = $('#memberName').val();
 			let carInfo = $('#carInfo').val();
 			let carNum = $('#carNum').val();
 			let memberTel = $('#memberTel').val();
 			let memberEmail = $('#memberEmail').val();
-			
 			location.href='/member/join?memberId=' + memberId + '&memberPw=' + memberPw +
 			'&memberName=' + memberName + '&carInfo=' + carInfo + '&carNum=' + carNum + 
 			'&memberTel=' + memberTel + '&memberEmail=' + memberEmail;

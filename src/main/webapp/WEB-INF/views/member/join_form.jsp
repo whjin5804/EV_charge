@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/resources/js/member/join_form.js?ver=1"></script>
+<script type="text/javascript" src="/resources/js/member/join_form.js?ver=12"></script>
 <style type="text/css">
 #submitBtn{
 	width: 60%;
@@ -38,7 +38,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-9">
 						<label for="memberId">아이디 <b style="color : red;">*</b> </label>
-						<input type="text" class="form-control" id="memberId" name="memberId" required>
+						<input type="text" class="form-control" id="memberId1" name="memberId" required>
 					</div>
 					<div class="form-group col-md-2 align-self-end">
 						<button type="button" id="checkIdBtn" class="btn btn-primary checkId" value="아이디 중복 확인" style="width: 100%">아이디 중복 확인</button>
@@ -52,7 +52,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="memberPw" >비밀번호 <b style="color : red;">*</b> </label>
-						<input type="password" class="form-control" id="memberPw" name="memberPw" required>
+						<input type="password" class="form-control" id="memberPw1" name="memberPw" required>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="memberPw2">비밀번호확인 <b style="color : red;">*</b> 

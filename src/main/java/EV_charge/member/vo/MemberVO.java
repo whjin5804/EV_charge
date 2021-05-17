@@ -12,9 +12,15 @@ public class MemberVO {
 	private String memberEmail;
 	private String salt;
 	private String isAdmin;
+	private String rememberId;
 	
 	
-	
+	public String getRememberId() {
+		return rememberId;
+	}
+	public void setRememberId(String rememberId) {
+		this.rememberId = rememberId;
+	}
 	public String getMemberName() {
 		return memberName;
 	}

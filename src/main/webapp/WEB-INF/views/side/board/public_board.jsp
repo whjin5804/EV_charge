@@ -6,10 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/common/common.css">
+<style type="text/css">
+a:hover {
+	cursor: pointer;
+	font-size: 1.3rem;
+}
+</style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 50px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,19 +28,21 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search">
+      <input class="form-control mr-sm-2" value="${paging.searchKeyword }" name="searchKeyword" type="search" placeholder="검색" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
     </form>
   </div>
 </nav>
 
 
+<hr>
 <c:forEach items="${boardList}" var="board">
 	<div class="list-group">
 		<h5>
-			<a href="" >
+			<a href="/board/detailBoard?boardCode=${board.boardCode }" style="font-weight: bold;">
 				${board.boardTitle }
 			</a>
+				|	<font style="font-size: 15px;">${board.writer }</font>
 		</h5>
 		<div>
 			${board.boardDate} / ${board.readCnt}	
@@ -45,7 +51,25 @@
 	</div>
 </c:forEach>
 
-
+	
+	<div style="display: block; text-align: center;">		
+		<c:if test="${paging.startPage != 1 }">
+			<a href="/board/publicBoard?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="/board/publicBoard?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/board/publicBoard?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
 
 </body>
 </html>
